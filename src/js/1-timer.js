@@ -20,7 +20,7 @@ const options = {
   defaultDate: new Date(),
   minuteIncrement: 1,
   onClose(selectedDates) {
-    if (selectedDates[0] < new Date()) {
+    if (selectedDates[0] <= new Date()) {
       iziToast.error({
         message: 'Please choose a date in the future',
       });
@@ -72,7 +72,7 @@ refs.dataStart.addEventListener('click', () => {
     }
     const { days, hours, minutes, seconds } = convertMs(diffTime);
 
-    refs.dataDays.textContent = days;
+    refs.dataDays.textContent = addLeadingZero(days);
     refs.dataHours.textContent = addLeadingZero(hours);
     refs.dataMinutes.textContent = addLeadingZero(minutes);
     refs.dataSeconds.textContent = addLeadingZero(seconds);
